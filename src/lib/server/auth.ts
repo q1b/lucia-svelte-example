@@ -1,7 +1,7 @@
 // src/lib/server/auth.ts
 import { Lucia } from "lucia";
 import { dev } from "$app/environment";
-import { Google } from "arctic";
+import { Google, type GoogleTokens } from "arctic";
 import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI } from "$env/static/private"
 import { LibSQLAdapter } from "@lucia-auth/adapter-sqlite";
 import { client } from "$lib/server/db";
@@ -37,3 +37,4 @@ declare module "lucia" {
 }
 
 export const google = new Google(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, dev ? 'http://localhost:3000/google/callback' : GOOGLE_REDIRECT_URI);
+

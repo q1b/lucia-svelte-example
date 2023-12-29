@@ -13,3 +13,11 @@ export const sessionTable = sqliteTable("user_session", {
     .references(() => userTable.id),
   expiresAt: integer("expires_at").notNull()
 });
+
+export const keyTable = sqliteTable('user_key', {
+  id: text("id").notNull().primaryKey(),  // google:userId
+  userId: text("user_id")
+    .notNull()
+    .references(() => userTable.id),
+  hashedPassword: text('hashed_password')
+})
